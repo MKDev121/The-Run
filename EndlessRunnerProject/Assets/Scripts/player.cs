@@ -50,12 +50,7 @@ public class player : MonoBehaviour
         Movement();
         Gravity();
         Debug.Log(onGround);
-       
-      
-            touchControls();
-        
-      
-        
+        touchControls();
       
     }
     void OnTriggerEnter(Collider other)
@@ -64,7 +59,7 @@ public class player : MonoBehaviour
         {
             Destroy(other.gameObject);
             audioSource.Play();
-            plStats.score += 1;
+            plStats.coin += 1;
            
         }
         if(other.tag == "Obstacle")

@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] characters;
     public int TotalCoins;
     public Text totalCoinsTxt;
+
+    int highScore;
+    public Text highScoreTxt;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             charIndex = PlayerPrefs.GetInt("CharIndex", 0);
-            charIndex=Random.Range(0,7);
+            
 
         }
         else
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
             characters[charIndex].SetActive(true);
         }
         TotalCoins = PlayerPrefs.GetInt("TotalCoins", 0);
+        highScore=PlayerPrefs.GetInt("HighScore",0);
     }
 
     // Update is called once per frame
@@ -47,7 +51,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-          PlayerPrefs.SetInt("CharIndex", charIndex);
+            
+            PlayerPrefs.SetInt("CharIndex", charIndex);
+            highScoreTxt.text=highScore.ToString();
             
         }
         PlayerPrefs.SetInt("TotalCoins", TotalCoins);
@@ -68,7 +74,11 @@ public class GameManager : MonoBehaviour
     public void menu()
     {
         plStats = plScript.GetComponent<stats>();
-        TotalCoins += plStats.score;
+        TotalCoins += plStats.coin;
+        if(highScore<plStats.score){
+            highScore=plStats.score;
+            PlayerPrefs.SetInt("HighScore",highScore);
+        }
         SceneManager.LoadScene(0);
     }
     void IncreaseDifficulty()

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public int charIndex;
     public GameObject[] characters;
     public int TotalCoins;
-   // public Text totalCoinsTxt;
+    public Text totalCoinsTxt;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            //charIndex = PlayerPrefs.GetInt("CharIndex", 0);
+            charIndex = PlayerPrefs.GetInt("CharIndex", 0);
             charIndex=Random.Range(0,7);
 
         }
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             charIndex=0;
             characters[charIndex].SetActive(true);
         }
-        //TotalCoins = PlayerPrefs.GetInt("TotalCoins", 0);
+        TotalCoins = PlayerPrefs.GetInt("TotalCoins", 0);
     }
 
     // Update is called once per frame
@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-          //  PlayerPrefs.SetInt("CharIndex", charIndex);
+          PlayerPrefs.SetInt("CharIndex", charIndex);
             
         }
-        // PlayerPrefs.SetInt("TotalCoins", TotalCoins);
-        // PlayerPrefs.Save();
+        PlayerPrefs.SetInt("TotalCoins", TotalCoins);
+        
         charIndex = Mathf.Clamp(charIndex, 0, 7);
-        //totalCoinsTxt.text=" x "+TotalCoins.ToString();
+        totalCoinsTxt.text=" x "+TotalCoins.ToString();
 
     }
   public void Restart()

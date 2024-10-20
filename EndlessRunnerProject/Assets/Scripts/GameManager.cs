@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public float difficulty;
     public int charIndex;
     public GameObject[] characters;
+    
+    public GameObject[] buttons;
+
     public int TotalCoins;
     public Text totalCoinsTxt;
 
@@ -80,6 +83,16 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore",highScore);
         }
         SceneManager.LoadScene(0);
+    }
+    public void quit_game(){
+        Application.Quit();
+    }
+    public void character_selection(GameObject obj){
+        
+        obj.SetActive(!obj.activeSelf);
+        foreach(GameObject button in buttons){
+            button.SetActive(!button.activeSelf);
+        }
     }
     void IncreaseDifficulty()
     {

@@ -2,10 +2,7 @@
   <unityversion>8.3.0</unityversion>
 
   <androidPackages>
-    <androidPackage spec="com.ironsource.sdk:mediationsdk:8.3.0">
-      <repositories>
-        <repository>https://android-sdk.is.com/</repository>
-      </repositories>
+    <androidPackage spec="com.unity3d.ads-mediation:mediation-sdk:8.3.0">
     </androidPackage>
   </androidPackages>
 
